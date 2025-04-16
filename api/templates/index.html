@@ -7,38 +7,38 @@
     <style>
         /* Variables for color themes */
         :root {
-            --bg-color: rgb(247, 238, 203);
+            --bg-color: rgb(203, 231, 247);
             --text-color: #524b25;
-            --accent-color: #ca9400;
-            --secondary-color: #ffae00;
-            --highlight-color: #dbb300;
+            --accent-color: #0080ca;
+            --secondary-color: #0099ff;
+            --highlight-color: #0071db;
             --shadow-color: rgba(0, 0, 0, 0.1);
-            --card-bg: rgb(250, 244, 226);
+            --card-bg: rgba(255, 255, 255, 0.267);
             --header-bg: rgba(255, 255, 255, 0.459);
             --footer-bg: #f1f1f1;
-            --border-color: #ffae00;
+            --border-color: #006eff;
             --success-color: #28a745;
             --logo-primary: #1C1C1C;
             --logo-secondary: #000000;
-            --logo-glow: rgba(255, 230, 0, 0.5);
+            --logo-glow: rgba(0, 174, 255, 0.5);
         }
 
         /* Dark mode theme */
         [data-theme="dark"] {
-            --bg-color: rgb(63, 59, 0);
-            --text-color: #fffecf;
-            --accent-color: #e2b539;
-            --secondary-color: #f7d723;
-            --highlight-color: #f8ff95;
+            --bg-color: rgb(12, 0, 63);
+            --text-color: #cff0ff;
+            --accent-color: #399ee2;
+            --secondary-color: #0a73b9;
+            --highlight-color: #95c3ff;
             --shadow-color: rgba(0, 0, 0, 0.3);
-            --card-bg: rgb(141, 143, 22);
-            --header-bg: rgba(139, 113, 24, 0.9);
-            --footer-bg: rgb(117, 100, 4);
+            --card-bg: rgba(29, 102, 211, 0.699);
+            --header-bg: rgba(12, 88, 150, 0.9);
+            --footer-bg: rgb(4, 53, 117);
             --border-color: #444;
             --success-color: #5cb85c;
             --logo-primary: #f1f1f1;
             --logo-secondary: #ffffff;
-            --logo-glow: rgba(199, 186, 0, 0.5);
+            --logo-glow: rgba(3, 103, 197, 0.5);
         }
 
         /* Base styles */
@@ -101,10 +101,11 @@
             align-items: center;
             gap: 15px;
             transition: transform 0.3s ease;
+            color: var(--accent-color);
         }
 
         .logo-container:hover {
-            transform: scale(1.05);
+            transform: translateX(4px);
         }
 
         .logo {
@@ -115,7 +116,6 @@
         .brand-name {
             font-size: 1.8rem;
             font-weight: bold;
-            color: var(--accent-color);
         }
 
         /* Navigation */
@@ -174,7 +174,7 @@
         }
 
         .hero-title {
-            font-size: 3rem;
+            font-size: 6rem;
             margin-bottom: 20px;
             line-height: 1.2;
         }
@@ -236,6 +236,7 @@
         /* Card elements */
         .card {
             background-color: var(--card-bg);
+            backdrop-filter: blur(5px);
             border-radius: 8px;
             box-shadow: 0 6px 15px var(--shadow-color);
             overflow: hidden;
@@ -466,7 +467,7 @@
         .form-control {
             width: 100%;
             padding: 12px 15px;
-            border: 1px solid var(--border-color);
+            border: 1px solid var(--accent-color);
             border-radius: 4px;
             background-color: var(--bg-color);
             color: var(--text-color);
@@ -511,7 +512,7 @@
         .maps-embed {
             padding: 0;
             border-radius: 20px;
-            border: var(--border-color) 5px solid !important;
+            border: var(--accent-color) 5px solid !important;
         }
 
         /* Footer */
@@ -598,7 +599,7 @@
             text-align: center;
             padding-top: 30px;
             margin-top: 30px;
-            border-top: 1px solid var(--border-color);
+            border-top: 1px solid var(--accent-color);
         }
 
         /* Theme toggle */
@@ -846,20 +847,20 @@
             url('https://cdn.fontshare.com/wf/Q4HSPVDYTOUBPOAOZYHPZVC7O2PGIO7Y/SO2ISBDOPZJKRB2HKMZUFXEIBL7Y7II5/5OD6IX4HNMWQSDBVZMNWTXDCHJXE3VSI.ttf') format('truetype');
         }
 
-        /* Nippo */
+        /* Boska */
         @font-face {
-            font-family: 'Nippo';
-            src: url('https://cdn.fontshare.com/wf/U7JSLDUPOD4CH2AU5H6SM6CTOVK6PG6Z/SNDLV7SPHQN4WOXGU7TVOIAJHZT4EK44/VRZUBY2RFQGFI5FK7Z6TUCJRE5WBEFEN.woff2') format('woff2'),
-            url('https://cdn.fontshare.com/wf/U7JSLDUPOD4CH2AU5H6SM6CTOVK6PG6Z/SNDLV7SPHQN4WOXGU7TVOIAJHZT4EK44/VRZUBY2RFQGFI5FK7Z6TUCJRE5WBEFEN.woff') format('woff'),
-            url('https://cdn.fontshare.com/wf/U7JSLDUPOD4CH2AU5H6SM6CTOVK6PG6Z/SNDLV7SPHQN4WOXGU7TVOIAJHZT4EK44/VRZUBY2RFQGFI5FK7Z6TUCJRE5WBEFEN.ttf') format('truetype');
+            font-family: 'Boska';
+            src: url('https://cdn.fontshare.com/wf/UZAJJDUIZXA376LEK3SYU4W63A3GPTV7/HBA5VHMSNE777K5NRBBNRISEIC4UCHBH/B3FYQBLP5HE6ST6A4II2BBKDNLJH7JCB.woff2') format('woff2'),
+            url('https://cdn.fontshare.com/wf/UZAJJDUIZXA376LEK3SYU4W63A3GPTV7/HBA5VHMSNE777K5NRBBNRISEIC4UCHBH/B3FYQBLP5HE6ST6A4II2BBKDNLJH7JCB.woff') format('woff'),
+            url('https://cdn.fontshare.com/wf/UZAJJDUIZXA376LEK3SYU4W63A3GPTV7/HBA5VHMSNE777K5NRBBNRISEIC4UCHBH/B3FYQBLP5HE6ST6A4II2BBKDNLJH7JCB.ttf') format('truetype');
         }
 
         *, body {
             font-family: "Satoshi", sans-serif;
         }
 
-        .hero-title {
-            font-family: "Nippo", sans-serif;
+        .hero-title, .brand-name {
+            font-family: "Boska", sans-serif;
         }
 
         .section-title {
@@ -900,7 +901,7 @@
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="container hero-content">
-            <h1 class="hero-title">Vinus Superstore – Quality Every Day</h1>
+            <h1 class="hero-title">Vinus Superstore</h1>
             <p class="hero-subtitle">Your Neighborhood Convenience, Open Every Day.</p>
             <div class="hero-buttons">
                 <a href="#services" class="btn btn-primary">Explore Services</a>
