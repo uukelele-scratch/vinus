@@ -956,7 +956,7 @@
             
             <div class="flex-container">
                 <div class="contact-form slide-right">
-                    <form id="contactForm" action="/internal/contact" method="post">
+                    <form id="contactForm" action="https://formspree.io/f/meoaweaw" method="post">
                         <div class="form-group">
                             <label for="name" class="form-label">Full Name</label>
                             <input type="text" id="name" class="form-control" placeholder="Your Name" required>
@@ -978,6 +978,7 @@
                         </div>
                         
                         <button type="submit" class="btn btn-dark" id="submit-btn">Send Message</button>
+                        <p id="form-status"></p>
                     </form>
                 </div>
 
@@ -1160,52 +1161,56 @@
         window.addEventListener('scroll', animateOnScroll);
         
         const contactForm = document.getElementById('contactForm');
-        const submitButton = document.getElementById('submit-btn')
+        const submitButton = document.getElementById('submit-btn');
+        const statusMessage = document.getElementById('form-status');
+
         if (contactForm) {
             contactForm.addEventListener('submit', async function (e) {
-                e.preventDefault();
+            e.preventDefault();
+            
+            // Get form field values
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+            const phone = document.getElementById('phone')?.value.trim() || null;
 
-                // Required form fields
-                const name = document.getElementById('name').value.trim();
-                const email = document.getElementById('email').value.trim();
-                const message = document.getElementById('message').value.trim();
+            // Check that all required fields are filled
+            if (name && email && message) {
+                try {
+                    submitButton.innerHTML = "<div class='loading'></div>";
+                    statusMessage.innerHTML = "Sending your message...";
 
-                // Optional form field
-                const phone = document.getElementById('phone')?.value.trim() || null;
+                    // Send data to Formspree
+                    const response = await fetch(contactForm.action, {
+                        method: 'POST',
+                        headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: new URLSearchParams({
+                        name: name,
+                        email: email,
+                        message: message,
+                        phone: phone,
+                        }),
+                    });
 
-                if (name && email && message) {
-                    try {
-                        submitButton.innerHTML = "<div class='loading'></div>"
-                        const response = await fetch('/internal/contact', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                            },
-                            body: JSON.stringify({
-                                name,
-                                email,
-                                message,
-                                phone,
-                            }),
-                        });
-
-                        if (response.ok) {
-                            alert('✅ Message sent successfully!');
-                            contactForm.reset();
-                            submitButton.innerText = "Send Message";
-                        } else {
-                            const err = await response.text();
-                            alert('❌ Failed to send message: ' + err);
-                            submitButton.innerText = "Send Message";
-                        }
-                    } catch (err) {
-                        alert('❌ Network error: ' + err.message);
-                        submitButton.innerText = "Send Message";
+                    if (response.ok || response.status === 302) {
+                        statusMessage.innerHTML = "✅ Message sent successfully!";
+                        contactForm.reset();
+                        submitButton.innerHTML = "Send Message";
+                    } else {
+                        const err = await response.json();
+                        statusMessage.innerHTML = "❌ Failed to send message: " + (err.errors ? err.errors.map(error => error.message).join(", ") : "Unknown error");
+                        submitButton.innerHTML = "Send Message";
                     }
-                } else {
-                    alert('⚠️ Please fill in all required fields.');
-                    submitButton.innerText = "Send Message";
+                } catch (err) {
+                    statusMessage.innerHTML = "❌ Network error: " + err.message;
+                    submitButton.innerHTML = "Send Message";
                 }
+            } else {
+                statusMessage.innerHTML = "⚠️ Please fill in all required fields.";
+                submitButton.innerHTML = "Send Message";
+            }
             });
         }
         
