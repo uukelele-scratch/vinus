@@ -618,6 +618,15 @@
             transform: rotate(30deg);
         }
 
+        .loading-btn {
+            animation: spin 1s infinite linear;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+
         /* Animation classes */
         .fade-in {
             animation: fadeIn 1s ease forwards;
@@ -941,7 +950,7 @@
             
             <div class="flex-container">
                 <div class="contact-form slide-right">
-                    <form id="contactForm">
+                    <form id="contactForm" action="/internal/contact" method="post">
                         <div class="form-group">
                             <label for="name" class="form-label">Full Name</label>
                             <input type="text" id="name" class="form-control" placeholder="Your Name" required>
@@ -962,7 +971,7 @@
                             <textarea id="message" class="form-control" placeholder="Tell us more about your requirements"></textarea>
                         </div>
                         
-                        <button type="submit" class="btn btn-dark">Send Message</button>
+                        <button type="submit" class="btn btn-dark" id="submit-btn">Send Message</button>
                     </form>
                 </div>
 
@@ -1144,24 +1153,52 @@
         window.addEventListener('load', animateOnScroll);
         window.addEventListener('scroll', animateOnScroll);
         
-        // Form submission handling
         const contactForm = document.getElementById('contactForm');
+        const submitButton = document.getElementById('submit-btn')
         if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
+            contactForm.addEventListener('submit', async function (e) {
                 e.preventDefault();
-                
-                // Simple form validation
-                const name = document.getElementById('name').value;
-                const email = document.getElementById('email').value;
-                const subject = document.getElementById('subject').value;
-                
-                if (name && email && subject) {
-                    // Here you would typically send the form data to a server
-                    // For demo purposes, we'll just show a success message
-                    alert('Thank you for your message! We will get back to you soon.');
-                    contactForm.reset();
+
+                // Required form fields
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const message = document.getElementById('message').value.trim();
+
+                // Optional form field
+                const phone = document.getElementById('phone')?.value.trim() || null;
+
+                if (name && email && message) {
+                    try {
+                        submitButton.classList.add("loading-btn");
+                        const response = await fetch('/internal/contact', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                name,
+                                email,
+                                message,
+                                phone,
+                            }),
+                        });
+
+                        if (response.ok) {
+                            alert('✅ Message sent successfully!');
+                            contactForm.reset();
+                            submitButton.classList.remove("loading-btn");
+                        } else {
+                            const err = await response.text();
+                            alert('❌ Failed to send message: ' + err);
+                            submitButton.classList.remove("loading-btn");
+                        }
+                    } catch (err) {
+                        alert('❌ Network error: ' + err.message);
+                        submitButton.classList.remove("loading-btn");
+                    }
                 } else {
-                    alert('Please fill in all required fields.');
+                    alert('⚠️ Please fill in all required fields.');
+                    submitButton.classList.remove("loading-btn");
                 }
             });
         }
