@@ -13,10 +13,10 @@
             --secondary-color: #ffae00;
             --highlight-color: #dbb300;
             --shadow-color: rgba(0, 0, 0, 0.1);
-            --card-bg: white;
-            --header-bg: rgba(255, 255, 255, 0.9);
+            --card-bg: rgb(250, 244, 226);
+            --header-bg: rgba(255, 255, 255, 0.459);
             --footer-bg: #f1f1f1;
-            --border-color: #ddd;
+            --border-color: #ffae00;
             --success-color: #28a745;
             --logo-primary: #1C1C1C;
             --logo-secondary: #000000;
@@ -50,7 +50,7 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Satoshi', sans-serif;
             line-height: 1.6;
             color: var(--text-color);
             background-color: var(--bg-color);
@@ -240,6 +240,7 @@
             box-shadow: 0 6px 15px var(--shadow-color);
             overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            padding: 20px;
         }
 
         .card:hover {
@@ -503,7 +504,12 @@
             margin-right: 15px;
         }
 
+        .maps-container {
+            padding: 20px;
+        }
+
         .maps-embed {
+            padding: 0;
             border-radius: 20px;
             border: var(--border-color) 5px solid !important;
         }
@@ -580,7 +586,7 @@
         .footer-link a {
             color: var(--text-color);
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: padding 0.1s ease-out, color 0.3s ease;
         }
 
         .footer-link a:hover {
@@ -792,6 +798,81 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* Fonts */
+        /* Satoshi */
+        @font-face {
+            font-family: 'Satoshi';
+            src: url('https://cdn.fontshare.com/wf/NWBQYJIM7GCZ5XWD7D26ARB3VDY55ZRT/K63EV2KZIGKLE7RANQ2U42S6SVHU5RJ7/X6XYTKIVDUW7GZTZPZNN4EUM5KH54KHF.woff2') format('woff2'),
+                url('https://cdn.fontshare.com/wf/NWBQYJIM7GCZ5XWD7D26ARB3VDY55ZRT/K63EV2KZIGKLE7RANQ2U42S6SVHU5RJ7/X6XYTKIVDUW7GZTZPZNN4EUM5KH54KHF.woff') format('woff'),
+                url('https://cdn.fontshare.com/wf/NWBQYJIM7GCZ5XWD7D26ARB3VDY55ZRT/K63EV2KZIGKLE7RANQ2U42S6SVHU5RJ7/X6XYTKIVDUW7GZTZPZNN4EUM5KH54KHF.ttf') format('truetype');
+            font-weight: 300 900;
+            font-display: swap;
+            font-style: normal;
+        }
+        
+        /* Array */
+        @font-face {
+            font-family: 'Array';
+            src: url('https://cdn.fontshare.com/wf/4QBZHM3FOPYBI67YBLLWZV6ZYIUQTKEE/RXSUFPNEA6YXGQDMHMP3OODY6UWXRJBM/C6VM2RT4EU2NNT5XZWVYHR7WOIOGM4EU.woff2') format('woff2'),
+                url('https://cdn.fontshare.com/wf/4QBZHM3FOPYBI67YBLLWZV6ZYIUQTKEE/RXSUFPNEA6YXGQDMHMP3OODY6UWXRJBM/C6VM2RT4EU2NNT5XZWVYHR7WOIOGM4EU.woff') format('woff'),
+                url('https://cdn.fontshare.com/wf/4QBZHM3FOPYBI67YBLLWZV6ZYIUQTKEE/RXSUFPNEA6YXGQDMHMP3OODY6UWXRJBM/C6VM2RT4EU2NNT5XZWVYHR7WOIOGM4EU.ttf') format('truetype');
+            font-weight: 400;
+            font-display: swap;
+            font-style: normal;
+        }
+
+        /* Chillax */
+        @font-face {
+            font-family: 'Chillax';
+            src: url('https://cdn.fontshare.com/wf/WSPWZKQM26GGKSLVGSP2CFUHUMS5BCYQ/UE3YJANJM3SE3IWT4TOMYQVMLCQ6GZGG/XESIRBQU62YFBC7YQZI6D2NT5CNZ4PPU.woff2') format('woff2'),
+            url('https://cdn.fontshare.com/wf/WSPWZKQM26GGKSLVGSP2CFUHUMS5BCYQ/UE3YJANJM3SE3IWT4TOMYQVMLCQ6GZGG/XESIRBQU62YFBC7YQZI6D2NT5CNZ4PPU.woff') format('woff'),
+            url('https://cdn.fontshare.com/wf/WSPWZKQM26GGKSLVGSP2CFUHUMS5BCYQ/UE3YJANJM3SE3IWT4TOMYQVMLCQ6GZGG/XESIRBQU62YFBC7YQZI6D2NT5CNZ4PPU.ttf') format('truetype');
+        }
+
+        /* Panchang */
+        @font-face {
+            font-family: 'Panchang';
+            src: url('https://cdn.fontshare.com/wf/Z5KCEKMKCYG2OFAP5OBR4DMMOYKQBRXQ/NFSR6S2MRU5B3J5SXWNYS2EENMBHMQXY/65ZDTMKIAVM2PL6JQQLSB6Y2ZDSVPZ52.woff2') format('woff2'),
+            url('https://cdn.fontshare.com/wf/Z5KCEKMKCYG2OFAP5OBR4DMMOYKQBRXQ/NFSR6S2MRU5B3J5SXWNYS2EENMBHMQXY/65ZDTMKIAVM2PL6JQQLSB6Y2ZDSVPZ52.woff') format('woff'),
+            url('https://cdn.fontshare.com/wf/Z5KCEKMKCYG2OFAP5OBR4DMMOYKQBRXQ/NFSR6S2MRU5B3J5SXWNYS2EENMBHMQXY/65ZDTMKIAVM2PL6JQQLSB6Y2ZDSVPZ52.ttf') format('truetype');
+        }
+
+        /* Telma */
+        @font-face {
+            font-family: 'Telma';
+            src: url('https://cdn.fontshare.com/wf/Q4HSPVDYTOUBPOAOZYHPZVC7O2PGIO7Y/SO2ISBDOPZJKRB2HKMZUFXEIBL7Y7II5/5OD6IX4HNMWQSDBVZMNWTXDCHJXE3VSI.woff2') format('woff2'),
+            url('https://cdn.fontshare.com/wf/Q4HSPVDYTOUBPOAOZYHPZVC7O2PGIO7Y/SO2ISBDOPZJKRB2HKMZUFXEIBL7Y7II5/5OD6IX4HNMWQSDBVZMNWTXDCHJXE3VSI.woff') format('woff'),
+            url('https://cdn.fontshare.com/wf/Q4HSPVDYTOUBPOAOZYHPZVC7O2PGIO7Y/SO2ISBDOPZJKRB2HKMZUFXEIBL7Y7II5/5OD6IX4HNMWQSDBVZMNWTXDCHJXE3VSI.ttf') format('truetype');
+        }
+
+        /* Nippo */
+        @font-face {
+            font-family: 'Nippo';
+            src: url('https://cdn.fontshare.com/wf/U7JSLDUPOD4CH2AU5H6SM6CTOVK6PG6Z/SNDLV7SPHQN4WOXGU7TVOIAJHZT4EK44/VRZUBY2RFQGFI5FK7Z6TUCJRE5WBEFEN.woff2') format('woff2'),
+            url('https://cdn.fontshare.com/wf/U7JSLDUPOD4CH2AU5H6SM6CTOVK6PG6Z/SNDLV7SPHQN4WOXGU7TVOIAJHZT4EK44/VRZUBY2RFQGFI5FK7Z6TUCJRE5WBEFEN.woff') format('woff'),
+            url('https://cdn.fontshare.com/wf/U7JSLDUPOD4CH2AU5H6SM6CTOVK6PG6Z/SNDLV7SPHQN4WOXGU7TVOIAJHZT4EK44/VRZUBY2RFQGFI5FK7Z6TUCJRE5WBEFEN.ttf') format('truetype');
+        }
+
+        *, body {
+            font-family: "Satoshi", sans-serif;
+        }
+
+        .hero-title {
+            font-family: "Nippo", sans-serif;
+        }
+
+        .section-title {
+            font-family: "Chillax", sans-serif;
+        }
+
+        .btn {
+            font-family: "Panchang", sans-serif;
+        }
+
+        .testimonial-author {
+            font-family: "Telma", serif;
+        }
     </style>
 </head>
 <body>
@@ -952,7 +1033,7 @@
     <section id="contact" class="section">
         <div class="container">
             <h2 class="section-title">Get In Touch</h2>
-            <p class="section-subtitle">Have questions or ready to start? Contact us today to schedule your first session.</p>
+            <p class="section-subtitle">Have questions? Get in contact with us by submitting the form below.</p>
             
             <div class="flex-container">
                 <div class="contact-form slide-right">
@@ -982,21 +1063,20 @@
                     </form>
                 </div>
 
-                <div class="contact-info">
+                <div class="contact-info card maps-container">
                     <h3 class="card-title">Google Maps</h3>
                     <iframe
-                        class="maps-embed"
+                        class="maps-embed card-body"
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2354.9812526658907!2d-1.5494311873008941!3d53.82540933865548!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48795be36898d711%3A0xa2d3acb46d6019c9!2sVinus%20Superstore!5e0!3m2!1sen!2suk!4v1744791263509!5m2!1sen!2suk"
                         width="400"
                         height="300"
-                        style="border:0;"
                         allowfullscreen=""
                         loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade">
                     </iframe>
                 </div>
                 
-                <div class="contact-info slide-left">
+                <div class="contact-info slide-left card">
                     <h3 class="card-title">Contact Information</h3>
                     
                     <div class="contact-item">
@@ -1081,7 +1161,7 @@
                 </div>
                 
                 <div class="footer-links-container">
-                    <h3 class="footer-title">Resources</h3>
+                    <h3 class="footer-title">Quick Links</h3>
                     <ul class="footer-links">
                         <li class="footer-link"><a href="https://maps.app.goo.gl/j7NWUvt8MwruffGW9">Google Maps</a></li>
                         <li class="footer-link"><a href="https://www.nisalocally.co.uk/stores/west-yorkshire/leeds/491-493-scott-hall-rd">Nisa Locally</a></li>
