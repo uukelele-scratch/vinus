@@ -618,9 +618,15 @@
             transform: rotate(30deg);
         }
 
-        .loading-btn {
+        .loading {
+            height: 24px;
+            width: 24px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
             animation: spin 1s infinite linear;
         }
+
 
         @keyframes spin {
             to { transform: rotate(360deg); }
@@ -1169,7 +1175,7 @@
 
                 if (name && email && message) {
                     try {
-                        submitButton.classList.add("loading-btn");
+                        submitButton.innerHTML = "<div class='loading'></div>"
                         const response = await fetch('/internal/contact', {
                             method: 'POST',
                             headers: {
@@ -1186,19 +1192,19 @@
                         if (response.ok) {
                             alert('✅ Message sent successfully!');
                             contactForm.reset();
-                            submitButton.classList.remove("loading-btn");
+                            submitButton.innerText = "Send Message";
                         } else {
                             const err = await response.text();
                             alert('❌ Failed to send message: ' + err);
-                            submitButton.classList.remove("loading-btn");
+                            submitButton.innerText = "Send Message";
                         }
                     } catch (err) {
                         alert('❌ Network error: ' + err.message);
-                        submitButton.classList.remove("loading-btn");
+                        submitButton.innerText = "Send Message";
                     }
                 } else {
                     alert('⚠️ Please fill in all required fields.');
-                    submitButton.classList.remove("loading-btn");
+                    submitButton.innerText = "Send Message";
                 }
             });
         }
